@@ -1,5 +1,6 @@
 #pragma once
 
+#include <random>
 #include <array>
 #include <iostream>
 #include <string>
@@ -47,6 +48,7 @@ void clear(char delimiter = '\n');
 std::string printCard(const Card& card);
 void printDeck(const std::array<Card, 52>& deck);
 void swapCard(Card& a, Card& b);
+bool Choicing(const char choice[]);
 int getRandomNumber(int min, int max);
 void shuffleDeck(std::array<Card, 52>& deck);
 int getCardValue(const Card& card, bool getTuz);
