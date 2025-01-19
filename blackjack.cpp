@@ -27,15 +27,15 @@ int main()
 
 	if (result == WIN)
 	{
-		std::cout << "Òû âûèãğàë!\n";
+		std::cout << "Ğ¢Ñ‹ Ğ²Ñ‹Ğ¸Ğ³Ñ€Ğ°Ğ»!\n";
 	}
 	else if (result == NET)
 	{
-		std::cout << "Íè÷üÿ!\n";
+		std::cout << "ĞĞ¸Ñ‡ÑŒÑ!\n";
 	}
 	else
 	{
-		std::cout << "Òû ïğîèãğàë...\n";
+		std::cout << "Ğ¢Ñ‹ Ğ¿Ñ€Ğ¾Ğ¸Ğ³Ñ€Ğ°Ğ»...\n";
 	}
 
 	return 0;
