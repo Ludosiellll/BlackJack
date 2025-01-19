@@ -86,12 +86,12 @@ bool validation(int number, int min, int max) {
 
 int getPlayerChoice() {
     int choice(0);
-    cout << "Âûáåðèòå äåéñòâèå:" << endl;
-    cout << "1. Âçÿòü" << endl;
-    cout << "2. Îñòàâèòü" << endl;
-    cout << "Âàø âûáîð: ";
+    cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ Ð´ÐµÐ¹ÑÑ‚Ð²Ð¸Ðµ:" << endl;
+    cout << "1. Ð’Ð·ÑÑ‚ÑŒ" << endl;
+    cout << "2. ÐžÑÑ‚Ð°Ð²Ð¸Ñ‚ÑŒ" << endl;
+    cout << "Ð’Ð°Ñˆ Ð²Ñ‹Ð±Ð¾Ñ€: ";
     while ((!(cin >> choice)) || !validation(choice, 1, 2)) {
-        cout << "Îøèáêà ââîäà! Ââåäèòå (1 èëè 2): ";
+        cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°! Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ (1 Ð¸Ð»Ð¸ 2): ";
         clear();
     }
     return choice;
@@ -103,17 +103,17 @@ int playBlackjack(const std::array<Card, 52>& deck) {
     int DealerTotal = 0;
 
     if (cardIndex >= 52) {
-        cerr << "Îøèáêà: êîëîäà çàêîí÷èëàñü!" << endl;
+        cerr << "ÐžÑˆÐ¸Ð±ÐºÐ°: ÐºÐ¾Ð»Ð¾Ð´Ð° Ð·Ð°ÐºÐ¾Ð½Ñ‡Ð¸Ð»Ð°ÑÑŒ!" << endl;
         return LOSE;
     }
 
-    cout << "Âûáåðèòå ñêîëüêî î÷êîâ áóäåò èìåòü òóç:" << endl;
-    cout << "1. 11 î÷êîâ" << endl;
-    cout << "2. 1 î÷êî" << endl;
-    cout << "Âàø âûáîð: ";
+    cout << "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ð¾Ñ‡ÐºÐ¾Ð² Ð±ÑƒÐ´ÐµÑ‚ Ð¸Ð¼ÐµÑ‚ÑŒ Ñ‚ÑƒÐ·:" << endl;
+    cout << "1. 11 Ð¾Ñ‡ÐºÐ¾Ð²" << endl;
+    cout << "2. 1 Ð¾Ñ‡ÐºÐ¾" << endl;
+    cout << "Ð’Ð°Ñˆ Ð²Ñ‹Ð±Ð¾Ñ€: ";
     int choice(0);
     while ((!(cin >> choice) || !validation(choice, 1, 2))) {
-        cout << "Îøèáêà, ââåäèòå 1 èëè 2: ";
+        cout << "ÐžÑˆÐ¸Ð±ÐºÐ°, Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ 1 Ð¸Ð»Ð¸ 2: ";
         clear();
     }
     bool getTuz = (choice == 1);
@@ -121,31 +121,31 @@ int playBlackjack(const std::array<Card, 52>& deck) {
 
 
     DealerTotal += getCardValue(deck[cardIndex], getTuz);
-    cout << "Äèëëåð áåð¸ò êàðòó, êîëè÷åñòâî î÷êîâ ó Äèëåðà: " << DealerTotal << " (" << printCard(deck[cardIndex]) << ")" << '\n';
+    cout << "Ð”Ð¸Ð»Ð»ÐµÑ€ Ð±ÐµÑ€Ñ‘Ñ‚ ÐºÐ°Ñ€Ñ‚Ñƒ, ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð¾Ñ‡ÐºÐ¾Ð² Ñƒ Ð”Ð¸Ð»ÐµÑ€Ð°: " << DealerTotal << " (" << printCard(deck[cardIndex]) << ")" << '\n';
     cardIndex++;
 
     if (cardIndex >= 52) {
-        cerr << "Îøèáêà: êîëîäà çàêîí÷èëàñü!" << endl;
+        cerr << "ÐžÑˆÐ¸Ð±ÐºÐ°: ÐºÐ¾Ð»Ð¾Ð´Ð° Ð·Ð°ÐºÐ¾Ð½Ñ‡Ð¸Ð»Ð°ÑÑŒ!" << endl;
         return LOSE;
     }
 
 
-    cout << "Òû áåð¸øü äâå êàðòû.. " << endl;
+    cout << "Ð¢Ñ‹ Ð±ÐµÑ€Ñ‘ÑˆÑŒ Ð´Ð²Ðµ ÐºÐ°Ñ€Ñ‚Ñ‹.. " << endl;
     PlayerTotal += getCardValue(deck[cardIndex], getTuz);
-    cout << "Ïåðâàÿ êàðòà - " << "(" << printCard(deck[cardIndex]) << ")" << endl;
+    cout << "ÐŸÐµÑ€Ð²Ð°Ñ ÐºÐ°Ñ€Ñ‚Ð° - " << "(" << printCard(deck[cardIndex]) << ")" << endl;
     cardIndex++;
 
     if (cardIndex >= 52) {
-        cerr << "Îøèáêà: êîëîäà çàêîí÷èëàñü!" << endl;
+        cerr << "ÐžÑˆÐ¸Ð±ÐºÐ°: ÐºÐ¾Ð»Ð¾Ð´Ð° Ð·Ð°ÐºÐ¾Ð½Ñ‡Ð¸Ð»Ð°ÑÑŒ!" << endl;
         return LOSE;
     }
 
     PlayerTotal += getCardValue(deck[cardIndex], getTuz);
-    cout << "Âòîðàÿ êàðòà - " << "(" << printCard(deck[cardIndex]) << ")" << endl;
+    cout << "Ð’Ñ‚Ð¾Ñ€Ð°Ñ ÐºÐ°Ñ€Ñ‚Ð° - " << "(" << printCard(deck[cardIndex]) << ")" << endl;
     cardIndex++;
 
     cout << endl;
-    cout << "Ó òåáÿ " << PlayerTotal << " î÷êîâ" << endl;
+    cout << "Ð£ Ñ‚ÐµÐ±Ñ " << PlayerTotal << " Ð¾Ñ‡ÐºÐ¾Ð²" << endl;
 
     while (true) {
         if (PlayerTotal > 21) {
@@ -157,11 +157,11 @@ int playBlackjack(const std::array<Card, 52>& deck) {
             cout << endl;
             if (choice == 1) {
                 if (cardIndex >= 52) {
-                    cerr << "Îøèáêà: êîëîäà çàêîí÷èëàñü!" << endl;
+                    cerr << "ÐžÑˆÐ¸Ð±ÐºÐ°: ÐºÐ¾Ð»Ð¾Ð´Ð° Ð·Ð°ÐºÐ¾Ð½Ñ‡Ð¸Ð»Ð°ÑÑŒ!" << endl;
                     return LOSE;
                 }
                 PlayerTotal += getCardValue(deck[cardIndex], getTuz);
-                cout << "Òû áåð¸øü êàðòó.. Ó òåáÿ " << PlayerTotal << " î÷êîâ" << " (" << printCard(deck[cardIndex]) << ")" << endl;
+                cout << "Ð¢Ñ‹ Ð±ÐµÑ€Ñ‘ÑˆÑŒ ÐºÐ°Ñ€Ñ‚Ñƒ.. Ð£ Ñ‚ÐµÐ±Ñ " << PlayerTotal << " Ð¾Ñ‡ÐºÐ¾Ð²" << " (" << printCard(deck[cardIndex]) << ")" << endl;
                 cardIndex++;
             }
             else {
@@ -173,13 +173,13 @@ int playBlackjack(const std::array<Card, 52>& deck) {
 
     while (DealerTotal < 17) {
         if (cardIndex >= 52) {
-            cerr << "Îøèáêà: êîëîäà çàêîí÷èëàñü!" << endl;
+            cerr << "ÐžÑˆÐ¸Ð±ÐºÐ°: ÐºÐ¾Ð»Ð¾Ð´Ð° Ð·Ð°ÐºÐ¾Ð½Ñ‡Ð¸Ð»Ð°ÑÑŒ!" << endl;
             return LOSE;
         }
         cout << endl;
-        cout << "Äèëëåð áåð¸ò êàðòó.." << " (" << printCard(deck[cardIndex]) << ")" << endl;
+        cout << "Ð”Ð¸Ð»Ð»ÐµÑ€ Ð±ÐµÑ€Ñ‘Ñ‚ ÐºÐ°Ñ€Ñ‚Ñƒ.." << " (" << printCard(deck[cardIndex]) << ")" << endl;
         DealerTotal += getCardValue(deck[cardIndex], getTuz);
-        cout << "Ó Äèëëåðà " << DealerTotal << " î÷êîâ" << endl;
+        cout << "Ð£ Ð”Ð¸Ð»Ð»ÐµÑ€Ð° " << DealerTotal << " Ð¾Ñ‡ÐºÐ¾Ð²" << endl;
         cardIndex++;
     }
 
