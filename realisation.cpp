@@ -49,9 +49,11 @@ void swapCard(Card& a, Card& b) {
     b = temp;
 }
 
+mt19937 gen(std::random_device{}());
+
 int getRandomNumber(int min, int max) {
-    static const double fraction = 1.0 / (static_cast<double>(RAND_MAX) + 1.0);
-    return static_cast<int>(rand() * fraction * (max - min + 1) + min);
+    std::uniform_int_distribution<> distrib(min, max);
+    return distrib(gen);
 }
 
 void shuffleDeck(std::array<Card, 52>& deck) {
@@ -97,6 +99,8 @@ int getPlayerChoice() {
     return choice;
 }
 
+
+
 int playBlackjack(const std::array<Card, 52>& deck) {
     int cardIndex = 0; 
     int PlayerTotal = 0;
@@ -123,6 +127,7 @@ int playBlackjack(const std::array<Card, 52>& deck) {
     DealerTotal += getCardValue(deck[cardIndex], getTuz);
     cout << "Диллер берёт карту, количество очков у Дилера: " << DealerTotal << " (" << printCard(deck[cardIndex]) << ")" << '\n';
     cardIndex++;
+    cout << endl;
 
     if (cardIndex >= 52) {
         cerr << "Ошибка: колода закончилась!" << endl;
@@ -193,4 +198,29 @@ int playBlackjack(const std::array<Card, 52>& deck) {
     else {
         return (PlayerTotal > DealerTotal) ? WIN : LOSE;
     }
+}
+
+char toLowerCyrillic(char c) {
+    // Преобразуем символы кириллицы в нижний регистр
+    if (c >= 'А' && c <= 'Я') {
+        return c + 32; // Сдвигаем код символа на 32 (разница между 'А' и 'а' в Windows-1251)
+    }
+    return tolower(c); // Для остальных символов используем стандартный tolower
+}
+
+bool Choicing(const char choice[]) {
+
+    char firstChar = toLowerCyrillic(choice[0]);
+
+    while (firstChar != 'д' && firstChar != 'н') {
+        cout << "Ошибка ввода! Введите 'Да' или 'Нет': ";
+        clear();
+
+        char newChoice[10];
+        cin >> newChoice;
+
+        firstChar = toLowerCyrillic(newChoice[0]);
+    }
+
+    return firstChar == 'д';
 }
